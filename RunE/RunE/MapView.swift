@@ -16,7 +16,21 @@ class MapView: UIViewController, MKMapViewDelegate{
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     var refreshTimer:NSTimer? = nil
+    var allLocation = [CLLocationCoordinate2D]()
+    var allDataLocation = [[String: Double]]()
     
+    @IBAction func stopClicked(sender: AnyObject) {
+        self.saveData(){
+            (ret: Bool) in
+            if ret {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }else{
+                print("Location Data cannot saved")
+            }
+        }
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
@@ -24,8 +38,8 @@ class MapView: UIViewController, MKMapViewDelegate{
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        self.refreshTimer =  NSTimer(timeInterval: 5.0, target: self, selector: #selector(MapView.showCurrentLocation), userInfo: nil, repeats: true)
-//        NSRunLoop.currentRunLoop().addTimer(self.refreshTimer!, forMode: NSRunLoopCommonModes)
+        self.refreshTimer =  NSTimer(timeInterval: 5.0, target: self, selector: #selector(MapView.showCurrentLocation), userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(self.refreshTimer!, forMode: NSRunLoopCommonModes)
         
     }
     override func viewDidDisappear(animated: Bool) {
@@ -36,11 +50,15 @@ class MapView: UIViewController, MKMapViewDelegate{
     func showCurrentLocation(){
         if(LocationService.sharedInstance.lastPosition != nil){
             let currentLocation = LocationService.sharedInstance.getLastPosition()
+            
+            let cur_location:Dictionary = ["lat": currentLocation.latitude, "lon": currentLocation.longitude]
+            self.allDataLocation.append(cur_location)
+            
             let region = MKCoordinateRegionMakeWithDistance(currentLocation, 400.0, 400.0)
             self.mapView.setRegion(region, animated: true)
             
             self.mapView.removeOverlays(self.mapView.overlays)
-            var allLocation: [CLLocationCoordinate2D] = LocationService.sharedInstance.getAllPosition()
+            self.allLocation = LocationService.sharedInstance.getAllPosition()
             let polylineLayer = MKPolyline(coordinates: &allLocation, count: allLocation.count)
             polylineLayer.title = "Your Run"
             self.mapView.addOverlay(polylineLayer)
@@ -70,6 +88,19 @@ class MapView: UIViewController, MKMapViewDelegate{
         }
         return polylineRenderer
     }
+    
+    func saveData(completion:(ret: Bool)->Void){
+        
+        let userInfo = LoginService.sharedInstance.getUserInfo()
+        FirebaseService.sharedInstance.saveLocationData((self.allDataLocation as? AnyObject)!, uid: userInfo){
+            (ret: Bool) in
+            if ret {
+                completion(ret:true)
+            }else{
+                completion(ret:false)
+            }
+        }
+    }
 }
 
 class mapAnnotation: NSObject, MKAnnotation {
@@ -83,3 +114,9 @@ class mapAnnotation: NSObject, MKAnnotation {
         self.info = info
     }
 }
+
+class DataSet{
+    let latitude: Double? = nil
+    let longitude: Double? = nil
+}
+

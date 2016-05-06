@@ -8,12 +8,11 @@
 
 import Foundation
 import Firebase
-import FBSDKCoreKit
-import FBSDKLoginKit
+import CoreLocation
 
 class FirebaseService: NSObject{
     static let sharedInstance = FirebaseService()
-    var myRootRef:Firebase?
+    var rootRef:Firebase?
     var firebaseKey: String = ""
     override init() {
         super.init()
@@ -22,33 +21,36 @@ class FirebaseService: NSObject{
         startService()
     }
     func startService(){
-        self.myRootRef = Firebase(url:"\(self.firebaseKey)")
-    }
-    func setToFirebase(str: String){
-        self.myRootRef!.setValue(str)
+        self.rootRef = Firebase(url:"\(self.firebaseKey)")
+        self.rootRef!.observeEventType(.Value, withBlock: { snapshot in
+            let connected = snapshot.value as? Bool
+            if connected != nil && connected! {
+                print("Connected")
+            } else {
+                print("Not connected")
+            }
+        })
     }
     
-    func checkLogin(){
-        let facebookLogin = FBSDKLoginManager()
-        facebookLogin.logInWithReadPermissions(["email", "public_profile"], handler: {
-            (facebookResult, facebookError) -> Void in
-            if facebookError != nil {
-                print("Facebook login failed. Error \(facebookError)")
-            } else if facebookResult.isCancelled {
-                print("Facebook login was cancelled.")
+    func getFirebaseRef()->Firebase{
+        return self.rootRef!
+    }
+    
+    func saveLocationData(data:AnyObject, uid: String ,completion:(ret:Bool)->Void){
+        let locationRef = Firebase(url: "\(self.firebaseKey)/location_data")
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        let currentDate = dateFormatter.stringFromDate(NSDate())
+        
+        locationRef.childByAppendingPath(uid).childByAppendingPath(currentDate).setValue(data, withCompletionBlock: {
+            (error:NSError?, ref:Firebase!) in
+            if (error != nil) {
+                print("Data could not be saved.")
+                completion(ret:false)
             } else {
-                print(facebookResult)
-                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                print(accessToken)
-                self.myRootRef!.authWithOAuthProvider("facebook", token: accessToken,
-                    withCompletionBlock: { error, authData in
-                        if error != nil {
-                            print("Login failed. \(error)")
-                        } else {
-                            print("Logged in! \(authData.provider)")
-                            print("Logged in! \(authData.providerData["email"])")
-                        }
-                })
+                print("Data saved successfully!")
+                completion(ret:true)
             }
         })
     }

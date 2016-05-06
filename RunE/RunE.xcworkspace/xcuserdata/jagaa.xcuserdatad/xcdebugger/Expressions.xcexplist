@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "LocationDataSet.getAllData() -&gt; [DataSet]:MapView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allLocationData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapView.showCurrentLocation() -&gt; ():MapView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allDataLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDataSet.setDataSet(Double, lon : Double) -&gt; ():MapView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allLocationData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapView.saveData((ret : Bool) -&gt; ()) -&gt; ():MapView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allDataLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

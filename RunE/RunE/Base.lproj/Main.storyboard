@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,28 +18,102 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuR-tF-ro8">
-                                <rect key="frame" x="128" y="307" width="65" height="30"/>
-                                <state key="normal" title="Start Run"/>
-                                <connections>
-                                    <action selector="startRunningClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vHo-Jp-mqQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-sk-3x7">
-                                <rect key="frame" x="119" y="406" width="82" height="30"/>
-                                <state key="normal" title="CheckLogin"/>
-                                <connections>
-                                    <action selector="checkLoginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bjx-bJ-hWv"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="147.73333333333332" y="186.02000000000001"/>
+        </scene>
+        <!--Main View-->
+        <scene sceneID="OPt-1P-bMc">
+            <objects>
+                <viewController storyboardIdentifier="MainView" id="B5c-vJ-UBV" customClass="MainView" customModule="RunE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="odS-kZ-wMU"/>
+                        <viewControllerLayoutGuide type="bottom" id="HeF-7c-ant"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sLa-hT-rvs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujc-Dj-5o7">
+                                <rect key="frame" x="259" y="28" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="Fsk-7J-iDp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPv-rG-0Pd">
+                                <rect key="frame" x="128" y="87" width="65" height="30"/>
+                                <state key="normal" title="Start Run"/>
+                                <connections>
+                                    <action selector="startRunClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="CRH-cH-cz4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4V6-lW-5Hd">
+                                <rect key="frame" x="139" y="134" width="43" height="30"/>
+                                <state key="normal" title="Roads"/>
+                                <connections>
+                                    <action selector="roadsClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="Rco-a5-PXl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0M-pN-D9f">
+                                <rect key="frame" x="129" y="185" width="64" height="30"/>
+                                <state key="normal" title="Statistics"/>
+                                <connections>
+                                    <action selector="statisticsClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="pAS-AH-18w"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JPv-rG-0Pd" firstAttribute="centerX" secondItem="sLa-hT-rvs" secondAttribute="centerX" constant="1" id="KAV-5b-8xb"/>
+                            <constraint firstItem="4V6-lW-5Hd" firstAttribute="centerX" secondItem="sLa-hT-rvs" secondAttribute="centerX" constant="1" id="YgH-Rq-tfh"/>
+                            <constraint firstItem="Ujc-Dj-5o7" firstAttribute="top" secondItem="odS-kZ-wMU" secondAttribute="bottom" constant="8" id="bUd-wV-qMr"/>
+                            <constraint firstItem="M0M-pN-D9f" firstAttribute="centerX" secondItem="sLa-hT-rvs" secondAttribute="centerX" constant="1" id="e3A-sY-CwW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ujc-Dj-5o7" secondAttribute="trailing" constant="-7" id="hE8-3D-lYR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dyj-dH-8GR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="537" y="186"/>
+        </scene>
+        <!--Login View-->
+        <scene sceneID="dSH-NK-x5I">
+            <objects>
+                <viewController storyboardIdentifier="LoginView" id="jYF-lB-2bC" customClass="LoginView" customModule="RunE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dm5-qP-2SP"/>
+                        <viewControllerLayoutGuide type="bottom" id="fjw-K4-t3B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uxm-x3-hph">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ce-Aq-11g">
+                                <rect key="frame" x="66" y="475" width="187" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="187" id="3oz-Ls-jaj"/>
+                                    <constraint firstAttribute="height" constant="48" id="ekD-t8-dDI"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="facebook_login.png"/>
+                                <connections>
+                                    <action selector="loginButtonClicked:" destination="jYF-lB-2bC" eventType="touchUpInside" id="Mtc-9j-6LS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fjw-K4-t3B" firstAttribute="top" secondItem="0ce-Aq-11g" secondAttribute="bottom" constant="45" id="K03-fc-rKW"/>
+                            <constraint firstItem="0ce-Aq-11g" firstAttribute="centerX" secondItem="Uxm-x3-hph" secondAttribute="centerX" constant="1" id="VeJ-MO-DQU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VW4-DA-oPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="537" y="841"/>
         </scene>
         <!--Map View-->
         <scene sceneID="fF6-lS-xxX">
@@ -65,11 +139,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijJ-eT-32q">
+                                <rect key="frame" x="268" y="28" width="31" height="30"/>
+                                <state key="normal" title="stop"/>
+                                <connections>
+                                    <action selector="stopClicked:" destination="Z09-ml-yIw" eventType="touchUpInside" id="vfr-25-wE0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SB9-Wu-WEe" firstAttribute="leading" secondItem="r2y-gz-y9i" secondAttribute="leadingMargin" constant="-20" id="B8w-cm-I6w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ijJ-eT-32q" secondAttribute="trailing" constant="1" id="F4w-Oy-SMx"/>
                             <constraint firstItem="vh8-Ck-XJb" firstAttribute="top" secondItem="SB9-Wu-WEe" secondAttribute="bottom" id="IJc-f3-mWn"/>
+                            <constraint firstItem="ijJ-eT-32q" firstAttribute="top" secondItem="IG4-PO-zaV" secondAttribute="bottom" constant="8" id="reN-hI-ej7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SB9-Wu-WEe" secondAttribute="trailing" constant="-20" id="xz7-QB-mUt"/>
                         </constraints>
                     </view>
@@ -80,7 +163,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84W-fT-WR7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="519" y="186"/>
+            <point key="canvasLocation" x="929" y="186"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="facebook_login.png" width="591" height="145"/>
+    </resources>
 </document>

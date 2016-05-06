@@ -24,6 +24,7 @@
 		112969A41CD100F3004C1835 /* GraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969A31CD100F3004C1835 /* GraphicView.swift */; };
 		112969A61CD1010C004C1835 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969A51CD1010C004C1835 /* ServerService.swift */; };
 		112DCF7A1CD788F800B4B28A /* JLTGradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112DCF791CD788F800B4B28A /* JLTGradientPathRenderer.swift */; };
+		11A6BA4E1CDB841F007CDBFA /* facebook_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A6BA4D1CDB841F007CDBFA /* facebook_login.png */; };
 		11D69B691CD7BC2600849B24 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D69B681CD7BC2600849B24 /* LocationData.swift */; };
 		11D69B6B1CD8E90700849B24 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11D69B6A1CD8E90700849B24 /* Keys.plist */; };
 		11D69B6F1CD8E9CD00849B24 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D69B6E1CD8E9CD00849B24 /* Keys.swift */; };
@@ -66,6 +67,7 @@
 		112969A31CD100F3004C1835 /* GraphicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicView.swift; sourceTree = "<group>"; };
 		112969A51CD1010C004C1835 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		112DCF791CD788F800B4B28A /* JLTGradientPathRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTGradientPathRenderer.swift; sourceTree = "<group>"; };
+		11A6BA4D1CDB841F007CDBFA /* facebook_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_login.png; path = resource/facebook_login.png; sourceTree = "<group>"; };
 		11D69B681CD7BC2600849B24 /* LocationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		11D69B6A1CD8E90700849B24 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		11D69B6E1CD8E9CD00849B24 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		112969701CD10003004C1835 /* RunE */ = {
 			isa = PBXGroup;
 			children = (
+				11A6BA4C1CDB840E007CDBFA /* resource */,
 				112DCF781CD788EC00B4B28A /* others */,
 				1129699A1CD1009D004C1835 /* view */,
 				112969951CD10059004C1835 /* service */,
@@ -182,6 +185,14 @@
 				112DCF791CD788F800B4B28A /* JLTGradientPathRenderer.swift */,
 			);
 			name = others;
+			sourceTree = "<group>";
+		};
+		11A6BA4C1CDB840E007CDBFA /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				11A6BA4D1CDB841F007CDBFA /* facebook_login.png */,
+			);
+			name = resource;
 			sourceTree = "<group>";
 		};
 		11D69B741CD8F4F700849B24 /* frameworks */ = {
@@ -305,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A6BA4E1CDB841F007CDBFA /* facebook_login.png in Resources */,
 				11D69B6B1CD8E90700849B24 /* Keys.plist in Resources */,
 				1129697C1CD10003004C1835 /* LaunchScreen.storyboard in Resources */,
 				112969791CD10003004C1835 /* Assets.xcassets in Resources */,

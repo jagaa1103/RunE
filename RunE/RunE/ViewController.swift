@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        FirebaseService.sharedInstance.setToFirebase("hi Firebase")
+        self.checkLogin()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,18 +21,25 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func startRunningClicked(sender: AnyObject) {
-        startRunning()
-    }
-    @IBAction func checkLoginClicked(sender: AnyObject) {
-        LoginService.sharedInstance.checkLogin()
+    @IBAction func logouClicked(sender: AnyObject) {
+        LoginService.sharedInstance.logout()
     }
     
-    func startRunning(){
-        let mapView = self.storyboard?.instantiateViewControllerWithIdentifier("MapView")
-        self.presentViewController(mapView!, animated: true, completion: nil)
-        LocationService.sharedInstance.startService()
-        MotionService.sharedInstance.startService()
+    func checkLogin(){
+        LoginService.sharedInstance.checkLogin(){
+            (ret: Bool) in
+            if ret{
+                print("============================")
+                print("You are already logged in!!!")
+                let mainView = self.storyboard?.instantiateViewControllerWithIdentifier("MainView")
+                self.presentViewController(mainView!, animated: true, completion: nil)
+            }else{
+                print("============================")
+                print("You are not login yet!!!")
+                let loginView = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")
+                self.presentViewController(loginView!, animated: true, completion: nil)
+            }
+        }
     }
 }
 
