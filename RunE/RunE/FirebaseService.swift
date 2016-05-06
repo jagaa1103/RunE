@@ -42,8 +42,9 @@ class FirebaseService: NSObject{
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         let currentDate = dateFormatter.stringFromDate(NSDate())
+        let locations: Dictionary = ["locations": data]
         
-        locationRef.childByAppendingPath(uid).childByAppendingPath(currentDate).setValue(data, withCompletionBlock: {
+        locationRef.childByAppendingPath(uid).childByAppendingPath(currentDate).setValue(locations, withCompletionBlock: {
             (error:NSError?, ref:Firebase!) in
             if (error != nil) {
                 print("Data could not be saved.")
