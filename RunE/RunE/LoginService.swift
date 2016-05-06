@@ -35,7 +35,7 @@ class LoginService: NSObject{
             if authData != nil {
                 // user authenticated
                 print("user is logged in")
-                self.user_auth = "\(authData)"
+                self.user_auth = authData.uid
                 completion(ret: true)
             } else {
                 // No user is signed in

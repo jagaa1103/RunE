@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -39,28 +38,36 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujc-Dj-5o7">
                                 <rect key="frame" x="259" y="28" width="48" height="30"/>
-                                <state key="normal" title="Logout"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="logoutClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="Fsk-7J-iDp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPv-rG-0Pd">
                                 <rect key="frame" x="128" y="87" width="65" height="30"/>
-                                <state key="normal" title="Start Run"/>
+                                <state key="normal" title="Start Run">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="startRunClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="CRH-cH-cz4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4V6-lW-5Hd">
                                 <rect key="frame" x="139" y="134" width="43" height="30"/>
-                                <state key="normal" title="Roads"/>
+                                <state key="normal" title="Roads">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="roadsClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="Rco-a5-PXl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0M-pN-D9f">
                                 <rect key="frame" x="129" y="185" width="64" height="30"/>
-                                <state key="normal" title="Statistics"/>
+                                <state key="normal" title="Statistics">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="statisticsClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="pAS-AH-18w"/>
                                 </connections>
@@ -127,37 +134,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SB9-Wu-WEe">
-                                <rect key="frame" x="0.0" y="114" width="320" height="454"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="SB9-Wu-WEe" secondAttribute="height" multiplier="160:227" id="uS3-Pr-4hs"/>
-                                </constraints>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SB9-Wu-WEe">
+                                <rect key="frame" x="0.0" y="125" width="320" height="443"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEk-eS-ead">
-                                <rect key="frame" x="20" y="39" width="162" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijJ-eT-32q">
-                                <rect key="frame" x="268" y="28" width="31" height="30"/>
-                                <state key="normal" title="stop"/>
-                                <connections>
-                                    <action selector="stopClicked:" destination="Z09-ml-yIw" eventType="touchUpInside" id="vfr-25-wE0"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfV-xR-Pf4" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="-2" width="320" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO9-TE-ale">
+                                        <rect key="frame" x="171" y="34" width="141" height="42.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qie-q6-adR">
+                                        <rect key="frame" x="0.0" y="103" width="320" height="25"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVq-Yi-gME">
+                                        <rect key="frame" x="171" y="78" width="141" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEk-eS-ead">
+                                        <rect key="frame" x="8" y="34" width="141" height="42.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-Cg-Ymj">
+                                        <rect key="frame" x="8" y="77.5" width="141" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2V-3v-N7w" userLabel="StopButtonView">
+                                <rect key="frame" x="218" y="471" width="102" height="97"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijJ-eT-32q">
+                                        <rect key="frame" x="35" y="34" width="31" height="30"/>
+                                        <state key="normal" title="stop"/>
+                                        <connections>
+                                            <action selector="stopClicked:" destination="Z09-ml-yIw" eventType="touchUpInside" id="vfr-25-wE0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="WSL-LC-kRF"/>
+                                    <constraint firstAttribute="height" constant="97" id="k8J-FK-7xR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SB9-Wu-WEe" firstAttribute="leading" secondItem="r2y-gz-y9i" secondAttribute="leadingMargin" constant="-20" id="B8w-cm-I6w"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ijJ-eT-32q" secondAttribute="trailing" constant="1" id="F4w-Oy-SMx"/>
-                            <constraint firstItem="vh8-Ck-XJb" firstAttribute="top" secondItem="SB9-Wu-WEe" secondAttribute="bottom" id="IJc-f3-mWn"/>
-                            <constraint firstItem="ijJ-eT-32q" firstAttribute="top" secondItem="IG4-PO-zaV" secondAttribute="bottom" constant="8" id="reN-hI-ej7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SB9-Wu-WEe" secondAttribute="trailing" constant="-20" id="xz7-QB-mUt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SB9-Wu-WEe" secondAttribute="trailing" constant="-20" id="3EU-3u-RPL"/>
+                            <constraint firstItem="vh8-Ck-XJb" firstAttribute="top" secondItem="SB9-Wu-WEe" secondAttribute="bottom" id="MqG-xb-IhN"/>
+                            <constraint firstItem="lfV-xR-Pf4" firstAttribute="top" secondItem="r2y-gz-y9i" secondAttribute="topMargin" constant="-2" id="SFn-9l-4ts"/>
+                            <constraint firstItem="lfV-xR-Pf4" firstAttribute="leading" secondItem="r2y-gz-y9i" secondAttribute="leadingMargin" constant="-20" id="VBb-cX-ink"/>
+                            <constraint firstItem="SB9-Wu-WEe" firstAttribute="leading" secondItem="r2y-gz-y9i" secondAttribute="leadingMargin" constant="-20" id="rHe-1b-XBM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lfV-xR-Pf4" secondAttribute="trailing" constant="-20" id="vER-NQ-Tod"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="caloriesLabel" destination="qO9-TE-ale" id="2Cg-t9-bao"/>
                         <outlet property="distanceLabel" destination="QEk-eS-ead" id="KAu-JQ-dqs"/>
+                        <outlet property="durationLabel" destination="Qie-q6-adR" id="tYL-J5-1TW"/>
                         <outlet property="mapView" destination="SB9-Wu-WEe" id="P42-OM-TqA"/>
                     </connections>
                 </viewController>

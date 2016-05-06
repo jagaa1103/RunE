@@ -13,11 +13,20 @@ import RxCocoa
 
 class MapView: UIViewController, MKMapViewDelegate{
     
+    @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
+    
     var refreshTimer:NSTimer? = nil
+    var countTimer: NSTimer? = nil
     var allLocation = [CLLocationCoordinate2D]()
     var allDataLocation = [[String: Double]]()
+    
+    var total_distance:Int = 0
+    var total_calories = 0.0
+    
+    var startDate:NSDate?
     
     @IBAction func stopClicked(sender: AnyObject) {
         self.saveData(){
@@ -28,12 +37,12 @@ class MapView: UIViewController, MKMapViewDelegate{
                 print("Location Data cannot saved")
             }
         }
-        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
+        self.startDate = nil
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -41,6 +50,11 @@ class MapView: UIViewController, MKMapViewDelegate{
         self.refreshTimer =  NSTimer(timeInterval: 5.0, target: self, selector: #selector(MapView.showCurrentLocation), userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(self.refreshTimer!, forMode: NSRunLoopCommonModes)
         
+        countTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(MapView.durationUpdate), userInfo: nil, repeats: true)
+        
+        NSRunLoop.currentRunLoop().addTimer(self.countTimer!, forMode: NSRunLoopCommonModes)
+        
+        self.startDate = NSDate()
     }
     override func viewDidDisappear(animated: Bool) {
         self.refreshTimer?.invalidate()
@@ -63,15 +77,15 @@ class MapView: UIViewController, MKMapViewDelegate{
             polylineLayer.title = "Your Run"
             self.mapView.addOverlay(polylineLayer)
             
-            let distance = LocationService.sharedInstance.getDistance()
-            var b_distance:String?
-            if(distance > 999){
-                b_distance = String(format: "%.2f", (Double(distance)/1000)) + "Km"
-                
+            self.total_distance = LocationService.sharedInstance.getDistance()
+            self.total_calories = LocationService.sharedInstance.getTotalCalories()
+            
+            if(self.total_distance > 999){
+                self.distanceLabel.text = String(format: "%.2f", (Double(self.total_distance)/1000)) + "Km"
             }else{
-                b_distance = String(distance) + "m"
+                self.distanceLabel.text = String(self.total_distance) + "m"
             }
-            self.distanceLabel.text = b_distance
+            self.caloriesLabel.text = String(format: "%.2f", self.total_calories)
         }
     }
     
@@ -90,9 +104,17 @@ class MapView: UIViewController, MKMapViewDelegate{
     }
     
     func saveData(completion:(ret: Bool)->Void){
-        
+        if(self.total_distance < 10){
+            return
+        }
+        LocationService.sharedInstance.stopService()
         let userInfo = LoginService.sharedInstance.getUserInfo()
-        FirebaseService.sharedInstance.saveLocationData((self.allDataLocation as? AnyObject)!, uid: userInfo){
+        
+        let duration = NSDate().offsetFrom(self.startDate!)
+        
+        let running_info = ["total_distance": self.total_distance, "duration": duration, "calories": self.total_calories, "locations": self.allDataLocation as AnyObject]
+        
+        FirebaseService.sharedInstance.saveLocationData(userInfo, running_info: running_info){
             (ret: Bool) in
             if ret {
                 completion(ret:true)
@@ -100,6 +122,23 @@ class MapView: UIViewController, MKMapViewDelegate{
                 completion(ret:false)
             }
         }
+    }
+    
+    var hour = 0
+    var minute = 0
+    var second = 0
+    func durationUpdate(){
+        if(self.minute > 59){
+            self.hour += 1
+            self.minute = 0
+        }
+        if(self.second > 59){
+            self.second = 0
+            self.minute += 1
+        }else{
+            self.second += 1
+        }
+        self.durationLabel.text = "\(String(format: "%02d", self.hour)):\(String(format: "%02d", self.minute)):\(String(format: "%02d", self.second))"
     }
 }
 
@@ -118,5 +157,25 @@ class mapAnnotation: NSObject, MKAnnotation {
 class DataSet{
     let latitude: Double? = nil
     let longitude: Double? = nil
+}
+
+extension NSDate {
+    func offsetFrom(date:NSDate) -> String {
+        
+        let dayHourMinuteSecond: NSCalendarUnit = [.Day, .Hour, .Minute, .Second]
+        let difference = NSCalendar.currentCalendar().components(dayHourMinuteSecond, fromDate: date, toDate: self, options: [])
+        
+        let seconds = "\(difference.second)s"
+        let minutes = "\(difference.minute)m" + " " + seconds
+        let hours = "\(difference.hour)h" + " " + minutes
+        let days = "\(difference.day)d" + " " + hours
+        
+        if difference.day    > 0 { return days }
+        if difference.hour   > 0 { return hours }
+        if difference.minute > 0 { return minutes }
+        if difference.second > 0 { return seconds }
+        return ""
+    }
+    
 }
 

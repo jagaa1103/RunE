@@ -27,6 +27,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "LocationService.locationManager(CLLocationManager, didUpdateLocations : [CLLocation]) -&gt; ():LocationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "betaLocation">
+            </PersistentString>
+            <PersistentString
+               value = "alphaLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MapView.saveData((ret : Bool) -&gt; ()) -&gt; ():MapView.swift">
          <PersistentStrings>
             <PersistentString

@@ -20,6 +20,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     var alphaLocation: CLLocation? = nil
     var betaLocation: CLLocation? = nil
     var distance = 0
+    var speedInMinutes:Double = 0.0
+    var totalCalories:Double = 0.0
     
     override init() {
         super.init()
@@ -49,15 +51,28 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                 self.alphaLocation = locations.last
             }else{
                 self.betaLocation = locations.last
+                self.speedInMinutes = (locations.last?.speed)! * 60
                 let deltaDistance = calculateDistance(self.alphaLocation!, oldLocation: self.betaLocation!)
-                self.distance = self.distance + deltaDistance
+//                if MotionService.sharedInstance.activityState {
+                    self.distance = self.distance + deltaDistance
+                    print("distance: \(self.distance)")
+                    self.allLocation.append(self.lastPosition!)
+//                }
+                
+                let secondsPerGPSArrived = (self.betaLocation?.timestamp.timeIntervalSince1970)! - (self.alphaLocation?.timestamp.timeIntervalSince1970)!
+                let deltaAltitude = (self.betaLocation?.altitude)! - (self.alphaLocation?.altitude)!
+                let caloriesPerSecond = calculateCalories(Double(deltaDistance), speed: self.speedInMinutes, deltaAltitude: deltaAltitude)
+                self.totalCalories += caloriesPerSecond * secondsPerGPSArrived
+                    
                 self.alphaLocation = self.betaLocation!.copy() as? CLLocation
-                print("distance: \(self.distance)")
             }
-            
             self.lastPosition = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!)
-            self.allLocation.append(self.lastPosition!)
+            
         }
+    }
+    
+    func stopService(){
+        self.locationManager.stopUpdatingLocation()
     }
     
     func getLastPosition()->CLLocationCoordinate2D{
@@ -68,13 +83,24 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         return self.allLocation
     }
     
-    func calculateDistance(newLocation:CLLocation, oldLocation: CLLocation)->Int{
-        let distanceByMeter = newLocation.distanceFromLocation(oldLocation)
-        return Int(distanceByMeter)
-    }
-    
     func getDistance()->Int{
         return self.distance
     }
     
+    func getTotalCalories()->Double{
+        return self.totalCalories
+    }
+    
+    func calculateDistance(newLocation:CLLocation, oldLocation: CLLocation)->Int{
+        let distanceByMeter = newLocation.distanceFromLocation(oldLocation)
+        return Int(distanceByMeter)
+    }
+    func calculateCalories(deltaDistance: Double, speed: Double, deltaAltitude: Double)->Double{
+        let weight = 73.0
+        let grade = deltaAltitude / deltaDistance
+        let VO2 = 3.5 + (speed * 0.2) + (speed * grade * 0.9)
+        let METS = VO2 / 3.5
+        let caloriesPerSecond = (METS * weight) / (60*60)
+        return caloriesPerSecond
+    }
 }

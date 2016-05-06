@@ -12,6 +12,7 @@ import UIKit
 class MainView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = ColorTool().hexStringToUIColor("#FFFD00")
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)

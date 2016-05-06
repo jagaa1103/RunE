@@ -14,6 +14,7 @@ class MotionService: NSObject{
     
     static let sharedInstance = MotionService()
     let activityManager = CMMotionActivityManager()
+    var activityState: Bool = false
     
     override init() {
         super.init()
@@ -26,12 +27,16 @@ class MotionService: NSObject{
                     dispatch_async(dispatch_get_main_queue()) {
                         if(data.stationary == true){
                             print("Stationary")
+                            self.activityState = false
                         } else if (data.walking == true){
                             print("Walking")
+                            self.activityState = true
                         } else if (data.running == true){
                             print("Running")
+                            self.activityState = true
                         } else if (data.automotive == true){
                             print("Automotive")
+                            self.activityState = false
                         }
                     }
                 }

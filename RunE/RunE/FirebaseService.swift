@@ -36,15 +36,10 @@ class FirebaseService: NSObject{
         return self.rootRef!
     }
     
-    func saveLocationData(data:AnyObject, uid: String ,completion:(ret:Bool)->Void){
+    func saveLocationData(uid: String, running_info: AnyObject, completion:(ret:Bool)->Void){
         let locationRef = Firebase(url: "\(self.firebaseKey)/location_data")
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-        let currentDate = dateFormatter.stringFromDate(NSDate())
-        let locations: Dictionary = ["locations": data]
-        
-        locationRef.childByAppendingPath(uid).childByAppendingPath(currentDate).setValue(locations, withCompletionBlock: {
+        locationRef.childByAppendingPath(uid).childByAppendingPath(getCurrentTime()).setValue(running_info, withCompletionBlock: {
             (error:NSError?, ref:Firebase!) in
             if (error != nil) {
                 print("Data could not be saved.")
@@ -54,5 +49,17 @@ class FirebaseService: NSObject{
                 completion(ret:true)
             }
         })
+    }
+    
+    func getCurrentTime()->String{
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        let date = NSDate()
+        var currentDate = dateFormatter.stringFromDate(date)
+        let calendar = NSCalendar.currentCalendar()
+        let hour = calendar.component(NSCalendarUnit.Hour, fromDate: date)
+        let minute = calendar.component(NSCalendarUnit.Minute, fromDate: date)
+        currentDate = "\(hour):\(minute)," + currentDate
+        return currentDate
     }
 }

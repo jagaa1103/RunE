@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111958461CDCDA7E00E83F52 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111958451CDCDA7E00E83F52 /* Color.swift */; };
 		112969721CD10003004C1835 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969711CD10003004C1835 /* AppDelegate.swift */; };
 		112969741CD10003004C1835 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969731CD10003004C1835 /* ViewController.swift */; };
 		112969771CD10003004C1835 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112969751CD10003004C1835 /* Main.storyboard */; };
@@ -25,7 +26,6 @@
 		112969A61CD1010C004C1835 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969A51CD1010C004C1835 /* ServerService.swift */; };
 		112DCF7A1CD788F800B4B28A /* JLTGradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112DCF791CD788F800B4B28A /* JLTGradientPathRenderer.swift */; };
 		11A6BA4E1CDB841F007CDBFA /* facebook_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A6BA4D1CDB841F007CDBFA /* facebook_login.png */; };
-		11D69B691CD7BC2600849B24 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D69B681CD7BC2600849B24 /* LocationData.swift */; };
 		11D69B6B1CD8E90700849B24 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11D69B6A1CD8E90700849B24 /* Keys.plist */; };
 		11D69B6F1CD8E9CD00849B24 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D69B6E1CD8E9CD00849B24 /* Keys.swift */; };
 		11D69B711CD8ED4200849B24 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D69B701CD8ED4200849B24 /* FirebaseService.swift */; };
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		111958451CDCDA7E00E83F52 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1129696E1CD10003004C1835 /* RunE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		112969711CD10003004C1835 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		112969731CD10003004C1835 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		112969A51CD1010C004C1835 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		112DCF791CD788F800B4B28A /* JLTGradientPathRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTGradientPathRenderer.swift; sourceTree = "<group>"; };
 		11A6BA4D1CDB841F007CDBFA /* facebook_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_login.png; path = resource/facebook_login.png; sourceTree = "<group>"; };
-		11D69B681CD7BC2600849B24 /* LocationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		11D69B6A1CD8E90700849B24 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		11D69B6E1CD8E9CD00849B24 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		11D69B701CD8ED4200849B24 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -104,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		111958441CDCDA6D00E83F52 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				111958451CDCDA7E00E83F52 /* Color.swift */,
+			);
+			name = tools;
+			sourceTree = "<group>";
+		};
 		112969651CD10003004C1835 = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +167,6 @@
 				112969961CD10080004C1835 /* WearableService.swift */,
 				112969981CD1008E004C1835 /* MotionService.swift */,
 				112969A51CD1010C004C1835 /* ServerService.swift */,
-				11D69B681CD7BC2600849B24 /* LocationData.swift */,
 				11D69B6A1CD8E90700849B24 /* Keys.plist */,
 				11D69B6E1CD8E9CD00849B24 /* Keys.swift */,
 				11D69B701CD8ED4200849B24 /* FirebaseService.swift */,
@@ -170,6 +177,7 @@
 		1129699A1CD1009D004C1835 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				111958441CDCDA6D00E83F52 /* tools */,
 				1129699B1CD100AD004C1835 /* LoginView.swift */,
 				1129699D1CD100B7004C1835 /* MapView.swift */,
 				1129699F1CD100C0004C1835 /* MainView.swift */,
@@ -421,8 +429,8 @@
 				11D69B711CD8ED4200849B24 /* FirebaseService.swift in Sources */,
 				112969A61CD1010C004C1835 /* ServerService.swift in Sources */,
 				112969A01CD100C0004C1835 /* MainView.swift in Sources */,
+				111958461CDCDA7E00E83F52 /* Color.swift in Sources */,
 				11D69B6F1CD8E9CD00849B24 /* Keys.swift in Sources */,
-				11D69B691CD7BC2600849B24 /* LocationData.swift in Sources */,
 				1129699E1CD100B7004C1835 /* MapView.swift in Sources */,
 				1129699C1CD100AD004C1835 /* LoginView.swift in Sources */,
 				112969921CD10045004C1835 /* LocationService.swift in Sources */,
