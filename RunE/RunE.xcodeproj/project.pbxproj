@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		111958461CDCDA7E00E83F52 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111958451CDCDA7E00E83F52 /* Color.swift */; };
+		111958481CDD3C4D00E83F52 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 111958471CDD3C4C00E83F52 /* stop.png */; };
 		112969721CD10003004C1835 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969711CD10003004C1835 /* AppDelegate.swift */; };
 		112969741CD10003004C1835 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969731CD10003004C1835 /* ViewController.swift */; };
 		112969771CD10003004C1835 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112969751CD10003004C1835 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		111958451CDCDA7E00E83F52 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		111958471CDD3C4C00E83F52 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = resource/stop.png; sourceTree = "<group>"; };
 		1129696E1CD10003004C1835 /* RunE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		112969711CD10003004C1835 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		112969731CD10003004C1835 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		11A6BA4C1CDB840E007CDBFA /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				111958471CDD3C4C00E83F52 /* stop.png */,
 				11A6BA4D1CDB841F007CDBFA /* facebook_login.png */,
 			);
 			name = resource;
@@ -329,6 +332,7 @@
 				1129697C1CD10003004C1835 /* LaunchScreen.storyboard in Resources */,
 				112969791CD10003004C1835 /* Assets.xcassets in Resources */,
 				112969771CD10003004C1835 /* Main.storyboard in Resources */,
+				111958481CDD3C4D00E83F52 /* stop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

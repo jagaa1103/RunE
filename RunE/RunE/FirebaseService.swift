@@ -59,7 +59,8 @@ class FirebaseService: NSObject{
         let calendar = NSCalendar.currentCalendar()
         let hour = calendar.component(NSCalendarUnit.Hour, fromDate: date)
         let minute = calendar.component(NSCalendarUnit.Minute, fromDate: date)
-        currentDate = "\(hour):\(minute)," + currentDate
+        let second = calendar.component(NSCalendarUnit.Minute, fromDate: date)
+        currentDate = "\(hour):\(minute):\(second)," + currentDate
         return currentDate
     }
 }
