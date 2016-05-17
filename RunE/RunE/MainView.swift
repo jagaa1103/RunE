@@ -34,8 +34,6 @@ class MainView: UIViewController {
     func startRunning(){
         let mapView = self.storyboard?.instantiateViewControllerWithIdentifier("MapView")
         self.presentViewController(mapView!, animated: true, completion: nil)
-        LocationService.sharedInstance.startService()
-        MotionService.sharedInstance.startService()
     }
     
     func logout(){

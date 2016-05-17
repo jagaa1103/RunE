@@ -37,50 +37,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MainViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ain-YT-G3a">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujc-Dj-5o7">
                                 <rect key="frame" x="259" y="28" width="48" height="30"/>
                                 <state key="normal" title="Logout">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logoutClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="Fsk-7J-iDp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPv-rG-0Pd">
-                                <rect key="frame" x="128" y="87" width="65" height="30"/>
-                                <state key="normal" title="Start Run">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="startRunClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="CRH-cH-cz4"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4V6-lW-5Hd">
-                                <rect key="frame" x="139" y="134" width="43" height="30"/>
+                                <rect key="frame" x="101" y="447" width="118" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Roads">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="roadsClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="Rco-a5-PXl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0M-pN-D9f">
-                                <rect key="frame" x="129" y="185" width="64" height="30"/>
+                                <rect key="frame" x="92" y="490" width="137" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Statistics">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="statisticsClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="pAS-AH-18w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPv-rG-0Pd">
+                                <rect key="frame" x="80" y="364" width="160" height="74"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Start Run">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startRunClicked:" destination="B5c-vJ-UBV" eventType="touchUpInside" id="CRH-cH-cz4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JPv-rG-0Pd" firstAttribute="centerX" secondItem="sLa-hT-rvs" secondAttribute="centerX" constant="1" id="KAV-5b-8xb"/>
+                            <constraint firstItem="HeF-7c-ant" firstAttribute="top" secondItem="ain-YT-G3a" secondAttribute="bottom" id="O6p-52-YVv"/>
                             <constraint firstItem="4V6-lW-5Hd" firstAttribute="centerX" secondItem="sLa-hT-rvs" secondAttribute="centerX" constant="1" id="YgH-Rq-tfh"/>
+                            <constraint firstItem="ain-YT-G3a" firstAttribute="leading" secondItem="sLa-hT-rvs" secondAttribute="leadingMargin" constant="-20" id="aXM-g1-Gah"/>
                             <constraint firstItem="Ujc-Dj-5o7" firstAttribute="top" secondItem="odS-kZ-wMU" secondAttribute="bottom" constant="8" id="bUd-wV-qMr"/>
                             <constraint firstItem="M0M-pN-D9f" firstAttribute="centerX" secondItem="sLa-hT-rvs" secondAttribute="centerX" constant="1" id="e3A-sY-CwW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ujc-Dj-5o7" secondAttribute="trailing" constant="-7" id="hE8-3D-lYR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ain-YT-G3a" secondAttribute="trailing" constant="-20" id="hZk-ID-owd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ain-YT-G3a" secondAttribute="trailing" constant="-20" id="rvB-nh-sNe"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -100,6 +110,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MainViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="z85-sV-JDs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="3K5-t8-Vel"/>
+                                    <constraint firstAttribute="height" constant="568" id="fmY-BG-0dm"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ce-Aq-11g">
                                 <rect key="frame" x="66" y="475" width="187" height="48"/>
                                 <constraints>
@@ -114,8 +131,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="z85-sV-JDs" firstAttribute="top" secondItem="Uxm-x3-hph" secondAttribute="topMargin" id="8JG-3W-T1N"/>
                             <constraint firstItem="fjw-K4-t3B" firstAttribute="top" secondItem="0ce-Aq-11g" secondAttribute="bottom" constant="45" id="K03-fc-rKW"/>
                             <constraint firstItem="0ce-Aq-11g" firstAttribute="centerX" secondItem="Uxm-x3-hph" secondAttribute="centerX" constant="1" id="VeJ-MO-DQU"/>
+                            <constraint firstItem="z85-sV-JDs" firstAttribute="leading" secondItem="Uxm-x3-hph" secondAttribute="leadingMargin" constant="-20" id="kro-bN-bqj"/>
+                            <constraint firstItem="fjw-K4-t3B" firstAttribute="top" secondItem="z85-sV-JDs" secondAttribute="bottom" id="zZV-zn-iYG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z85-sV-JDs" secondAttribute="trailing" constant="-20" id="zq0-0K-ruK"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -250,6 +271,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MainViewBackground" width="375" height="667"/>
         <image name="facebook_login.png" width="591" height="145"/>
         <image name="stop.png" width="173" height="173"/>
     </resources>

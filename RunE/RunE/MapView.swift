@@ -29,6 +29,7 @@ class MapView: UIViewController, MKMapViewDelegate{
     var startDate:NSDate?
     
     @IBAction func stopClicked(sender: AnyObject) {
+        LocationService.sharedInstance.stopService()
         self.saveData(){
             (ret: Bool) in
             if ret {
@@ -43,6 +44,9 @@ class MapView: UIViewController, MKMapViewDelegate{
         super.viewDidLoad()
         self.mapView.delegate = self
         self.startDate = nil
+        
+        LocationService.sharedInstance.startService(self)
+        MotionService.sharedInstance.startService()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -105,7 +109,7 @@ class MapView: UIViewController, MKMapViewDelegate{
     
     func saveData(completion:(ret: Bool)->Void){
         if(self.total_distance < 10){
-            return
+            completion(ret:true)
         }
         LocationService.sharedInstance.stopService()
         let userInfo = LoginService.sharedInstance.getUserInfo()

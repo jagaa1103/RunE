@@ -23,14 +23,39 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     var speedInMinutes:Double = 0.0
     var totalCalories:Double = 0.0
     
+    var mapView:MapView? = nil
+    
     override init() {
         super.init()
+        
     }
     
-    func startService(){
+    func initService(){
+        self.lastPosition = nil
+        self.allLocation = [CLLocationCoordinate2D]()
+        self.alphaLocation = nil
+        self.betaLocation = nil
+        self.distance = 0
+        self.speedInMinutes = 0.0
+        self.totalCalories = 0.0
+    }
+    
+    func startService(view: MapView){
+        self.mapView = view
         self.locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
     }
+    
+    func pauseService(){
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func stopService(){
+        self.locationManager.stopUpdatingLocation()
+        self.initService()
+    }
+    
+    
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if(status == CLAuthorizationStatus.AuthorizedAlways){
@@ -53,6 +78,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                 self.betaLocation = locations.last
                 self.speedInMinutes = (locations.last?.speed)! * 60
                 let deltaDistance = calculateDistance(self.alphaLocation!, oldLocation: self.betaLocation!)
+                
+//                var state = MotionService.sharedInstance.activityState 
+                
                 if MotionService.sharedInstance.activityState {
                     self.distance = self.distance + deltaDistance
                     print("distance: \(self.distance)")
@@ -69,10 +97,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             self.lastPosition = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!)
             
         }
-    }
-    
-    func stopService(){
-        self.locationManager.stopUpdatingLocation()
     }
     
     func getLastPosition()->CLLocationCoordinate2D{
@@ -99,7 +123,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         let weight = 73.0
         let grade = deltaAltitude / deltaDistance
         let VO2 = 3.5 + (speed * 0.2) + (speed * grade * 0.9)
-        let METS = VO2 / 3.5
+//        let METS = VO2 / 3.5
+        let METS = VO2 / 4.0
         let caloriesPerSecond = (METS * weight) / (60*60)
         return caloriesPerSecond
     }
