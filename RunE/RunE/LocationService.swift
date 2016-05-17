@@ -53,11 +53,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                 self.betaLocation = locations.last
                 self.speedInMinutes = (locations.last?.speed)! * 60
                 let deltaDistance = calculateDistance(self.alphaLocation!, oldLocation: self.betaLocation!)
-//                if MotionService.sharedInstance.activityState {
+                if MotionService.sharedInstance.activityState {
                     self.distance = self.distance + deltaDistance
                     print("distance: \(self.distance)")
                     self.allLocation.append(self.lastPosition!)
-//                }
+                }
                 
                 let secondsPerGPSArrived = (self.betaLocation?.timestamp.timeIntervalSince1970)! - (self.alphaLocation?.timestamp.timeIntervalSince1970)!
                 let deltaAltitude = (self.betaLocation?.altitude)! - (self.alphaLocation?.altitude)!
