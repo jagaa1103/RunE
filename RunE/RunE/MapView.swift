@@ -17,79 +17,104 @@ class MapView: UIViewController, MKMapViewDelegate{
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet weak var motion_status_image: UIImageView!
     
     var refreshTimer:NSTimer? = nil
     var countTimer: NSTimer? = nil
-    var allLocation = [CLLocationCoordinate2D]()
-    var allDataLocation = [[String: Double]]()
     
-    var total_distance:Int = 0
-    var total_calories = 0.0
+    var allLocation = [CLLocationCoordinate2D]()
+    let disposeBag = DisposeBag()
+    
     
     var startDate:NSDate?
-    
-    @IBAction func stopClicked(sender: AnyObject) {
-        LocationService.sharedInstance.stopService()
-        self.saveData(){
-            (ret: Bool) in
-            if ret {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }else{
-                print("Location Data cannot saved")
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
         self.startDate = nil
         
-        LocationService.sharedInstance.startService(self)
+        LocationService.sharedInstance.startService()
         MotionService.sharedInstance.startService()
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.refreshTimer =  NSTimer(timeInterval: 5.0, target: self, selector: #selector(MapView.showCurrentLocation), userInfo: nil, repeats: true)
-        NSRunLoop.currentRunLoop().addTimer(self.refreshTimer!, forMode: NSRunLoopCommonModes)
         
-        countTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(MapView.durationUpdate), userInfo: nil, repeats: true)
+        receiveNewLocation()
+        durationUpdate()
         
-        NSRunLoop.currentRunLoop().addTimer(self.countTimer!, forMode: NSRunLoopCommonModes)
+//        countTimer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(MapView.durationUpdate), userInfo: nil, repeats: true)
+//        NSRunLoop.currentRunLoop().addTimer(self.countTimer!, forMode: NSRunLoopCommonModes)
+        
         
         self.startDate = NSDate()
+        
+        showTotalDistance()
+        showTotalCalories()
     }
     override func viewDidDisappear(animated: Bool) {
         self.refreshTimer?.invalidate()
         self.refreshTimer = nil
     }
     
-    func showCurrentLocation(){
-        if(LocationService.sharedInstance.lastPosition != nil){
-            let currentLocation = LocationService.sharedInstance.getLastPosition()
-            
-            let cur_location:Dictionary = ["lat": currentLocation.latitude, "lon": currentLocation.longitude]
-            self.allDataLocation.append(cur_location)
-            
-            let region = MKCoordinateRegionMakeWithDistance(currentLocation, 400.0, 400.0)
+    @IBAction func stopClicked(sender: AnyObject) {
+        LocationService.sharedInstance.stopService(){ (ret: Bool) in
+            if ret {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }else{
+                print("Location Data cannot saved")
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+    }
+    
+    func receiveNewLocation(){
+        LocationService.sharedInstance.currentLocation.asObservable().subscribe(onNext: { location in
+            self.allLocation.append(location.coordinate)
+            self.showCurrentLocation(location.coordinate)
+        })
+        .addDisposableTo(disposeBag)
+    }
+    
+    func showCurrentLocation(location:CLLocationCoordinate2D){
+            updateMotionStatus()
+        
+            let region = MKCoordinateRegionMakeWithDistance(location, 700.0, 700.0)
             self.mapView.setRegion(region, animated: true)
-            
+        
             self.mapView.removeOverlays(self.mapView.overlays)
-            self.allLocation = LocationService.sharedInstance.getAllPosition()
-            let polylineLayer = MKPolyline(coordinates: &allLocation, count: allLocation.count)
+
+            let polylineLayer = MKPolyline(coordinates: &self.allLocation, count: self.allLocation.count)
             polylineLayer.title = "Your Run"
             self.mapView.addOverlay(polylineLayer)
-            
-            self.total_distance = LocationService.sharedInstance.getDistance()
-            self.total_calories = LocationService.sharedInstance.getTotalCalories()
-            
-            if(self.total_distance > 999){
-                self.distanceLabel.text = String(format: "%.2f", (Double(self.total_distance)/1000)) + "Km"
+    }
+    
+    func showTotalDistance(){
+        LocationService.sharedInstance.totalDistance.asObservable().subscribeNext({ distance in
+            if(distance > 999){
+                self.distanceLabel.text = String(format: "%.2f", (Double(distance)/1000)) + "Km"
             }else{
-                self.distanceLabel.text = String(self.total_distance) + "m"
+                self.distanceLabel.text = String(distance) + "m"
             }
-            self.caloriesLabel.text = String(format: "%.2f", self.total_calories)
+        })
+        .addDisposableTo(disposeBag)
+    }
+    
+    func showTotalCalories(){
+        LocationService.sharedInstance.totalCalories.asObservable().subscribeNext({ calories in
+//            self.caloriesLabel.text = String(format: "%.2f", calories)
+            self.caloriesLabel.text = String(format: "%.0f", calories)
+        })
+        .addDisposableTo(disposeBag)
+    }
+    
+    
+    func updateMotionStatus(){
+        if MotionService.sharedInstance.activityState{
+                let image: UIImage = UIImage(named: MotionService.sharedInstance.motion_state)!
+                self.motion_status_image = UIImageView(image: image)
         }
     }
     
@@ -107,43 +132,14 @@ class MapView: UIViewController, MKMapViewDelegate{
         return polylineRenderer
     }
     
-    func saveData(completion:(ret: Bool)->Void){
-        if(self.total_distance < 10){
-            completion(ret:true)
-        }
-        LocationService.sharedInstance.stopService()
-        let userInfo = LoginService.sharedInstance.getUserInfo()
+    func durationUpdate(){
+        LocationService.sharedInstance.duration.asObservable().subscribeNext({ duration in
+            self.durationLabel.text = duration
+        })
+        .addDisposableTo(disposeBag)
         
-        let duration = NSDate().offsetFrom(self.startDate!)
-        
-        let running_info = ["total_distance": self.total_distance, "duration": duration, "calories": self.total_calories, "locations": self.allDataLocation as AnyObject]
-        
-        FirebaseService.sharedInstance.saveLocationData(userInfo, running_info: running_info){
-            (ret: Bool) in
-            if ret {
-                completion(ret:true)
-            }else{
-                completion(ret:false)
-            }
-        }
     }
     
-    var hour = 0
-    var minute = 0
-    var second = 0
-    func durationUpdate(){
-        if(self.minute > 59){
-            self.hour += 1
-            self.minute = 0
-        }
-        if(self.second > 59){
-            self.second = 0
-            self.minute += 1
-        }else{
-            self.second += 1
-        }
-        self.durationLabel.text = "\(String(format: "%02d", self.hour)):\(String(format: "%02d", self.minute)):\(String(format: "%02d", self.second))"
-    }
 }
 
 class mapAnnotation: NSObject, MKAnnotation {
@@ -156,11 +152,6 @@ class mapAnnotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.info = info
     }
-}
-
-class DataSet{
-    let latitude: Double? = nil
-    let longitude: Double? = nil
 }
 
 extension NSDate {

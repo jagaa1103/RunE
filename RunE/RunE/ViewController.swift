@@ -13,26 +13,29 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.checkLogin()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.checkLogin()
+    }
     
     @IBAction func logouClicked(sender: AnyObject) {
-        LoginService.sharedInstance.logout()
+        FirebaseService.sharedInstance.logout()
     }
     
     func checkLogin(){
-        LoginService.sharedInstance.checkLogin(){
+        FirebaseService.sharedInstance.checkAuth(){
             (ret: Bool) in
             if ret{
                 print("============================")
                 print("You are already logged in!!!")
-                let mainView = self.storyboard?.instantiateViewControllerWithIdentifier("MainView")
-                self.presentViewController(mainView!, animated: true, completion: nil)
+                let menuView = self.storyboard?.instantiateViewControllerWithIdentifier("MenuView")
+                self.presentViewController(menuView!, animated: true, completion: nil)
             }else{
                 print("============================")
                 print("You are not login yet!!!")

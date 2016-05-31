@@ -21,7 +21,7 @@
 		112969991CD1008E004C1835 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969981CD1008E004C1835 /* MotionService.swift */; };
 		1129699C1CD100AD004C1835 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1129699B1CD100AD004C1835 /* LoginView.swift */; };
 		1129699E1CD100B7004C1835 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1129699D1CD100B7004C1835 /* MapView.swift */; };
-		112969A01CD100C0004C1835 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1129699F1CD100C0004C1835 /* MainView.swift */; };
+		112969A01CD100C0004C1835 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1129699F1CD100C0004C1835 /* MenuView.swift */; };
 		112969A21CD100D2004C1835 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969A11CD100D2004C1835 /* FriendsView.swift */; };
 		112969A41CD100F3004C1835 /* GraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969A31CD100F3004C1835 /* GraphicView.swift */; };
 		112969A61CD1010C004C1835 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112969A51CD1010C004C1835 /* ServerService.swift */; };
@@ -31,6 +31,7 @@
 		113E717A1CEB5A9E00ED5C4D /* running.png in Resources */ = {isa = PBXBuildFile; fileRef = 113E71771CEB5A9E00ED5C4D /* running.png */; };
 		113E717B1CEB5A9E00ED5C4D /* stationary.png in Resources */ = {isa = PBXBuildFile; fileRef = 113E71781CEB5A9E00ED5C4D /* stationary.png */; };
 		113E717C1CEB5A9E00ED5C4D /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 113E71791CEB5A9E00ED5C4D /* walking.png */; };
+		11A1C0EE1CFC75460096CA1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11A1C0ED1CFC75460096CA1C /* GoogleService-Info.plist */; };
 		11A6BA4E1CDB841F007CDBFA /* facebook_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A6BA4D1CDB841F007CDBFA /* facebook_login.png */; };
 		11D69B6B1CD8E90700849B24 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11D69B6A1CD8E90700849B24 /* Keys.plist */; };
 		11D69B6F1CD8E9CD00849B24 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D69B6E1CD8E9CD00849B24 /* Keys.swift */; };
@@ -70,7 +71,7 @@
 		112969981CD1008E004C1835 /* MotionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 		1129699B1CD100AD004C1835 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1129699D1CD100B7004C1835 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		1129699F1CD100C0004C1835 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1129699F1CD100C0004C1835 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		112969A11CD100D2004C1835 /* FriendsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		112969A31CD100F3004C1835 /* GraphicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicView.swift; sourceTree = "<group>"; };
 		112969A51CD1010C004C1835 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		113E71771CEB5A9E00ED5C4D /* running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = running.png; path = resource/activity_state/running.png; sourceTree = "<group>"; };
 		113E71781CEB5A9E00ED5C4D /* stationary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stationary.png; path = resource/activity_state/stationary.png; sourceTree = "<group>"; };
 		113E71791CEB5A9E00ED5C4D /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = walking.png; path = resource/activity_state/walking.png; sourceTree = "<group>"; };
+		11A1C0ED1CFC75460096CA1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		11A6BA4D1CDB841F007CDBFA /* facebook_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_login.png; path = resource/facebook_login.png; sourceTree = "<group>"; };
 		11D69B6A1CD8E90700849B24 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		11D69B6E1CD8E9CD00849B24 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				112969781CD10003004C1835 /* Assets.xcassets */,
 				1129697A1CD10003004C1835 /* LaunchScreen.storyboard */,
 				1129697D1CD10003004C1835 /* Info.plist */,
+				11A1C0ED1CFC75460096CA1C /* GoogleService-Info.plist */,
 			);
 			path = RunE;
 			sourceTree = "<group>";
@@ -189,10 +192,10 @@
 		1129699A1CD1009D004C1835 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				11F6DF001CF6468A0079BD1B /* MapView */,
 				111958441CDCDA6D00E83F52 /* tools */,
 				1129699B1CD100AD004C1835 /* LoginView.swift */,
-				1129699D1CD100B7004C1835 /* MapView.swift */,
-				1129699F1CD100C0004C1835 /* MainView.swift */,
+				1129699F1CD100C0004C1835 /* MenuView.swift */,
 				112969A11CD100D2004C1835 /* FriendsView.swift */,
 				112969A31CD100F3004C1835 /* GraphicView.swift */,
 			);
@@ -228,6 +231,14 @@
 				11D69B721CD8F4F300849B24 /* FBSDKCoreKit.framework */,
 			);
 			name = frameworks;
+			sourceTree = "<group>";
+		};
+		11F6DF001CF6468A0079BD1B /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				1129699D1CD100B7004C1835 /* MapView.swift */,
+			);
+			name = MapView;
 			sourceTree = "<group>";
 		};
 		A72898BAA0C7FE62DBC157CA /* Frameworks */ = {
@@ -347,6 +358,7 @@
 				113E717B1CEB5A9E00ED5C4D /* stationary.png in Resources */,
 				113E71761CEB4CBD00ED5C4D /* bg1242x2208(@3x).png in Resources */,
 				11D69B6B1CD8E90700849B24 /* Keys.plist in Resources */,
+				11A1C0EE1CFC75460096CA1C /* GoogleService-Info.plist in Resources */,
 				1129697C1CD10003004C1835 /* LaunchScreen.storyboard in Resources */,
 				112969791CD10003004C1835 /* Assets.xcassets in Resources */,
 				112969771CD10003004C1835 /* Main.storyboard in Resources */,
@@ -452,7 +464,7 @@
 				112969741CD10003004C1835 /* ViewController.swift in Sources */,
 				11D69B711CD8ED4200849B24 /* FirebaseService.swift in Sources */,
 				112969A61CD1010C004C1835 /* ServerService.swift in Sources */,
-				112969A01CD100C0004C1835 /* MainView.swift in Sources */,
+				112969A01CD100C0004C1835 /* MenuView.swift in Sources */,
 				111958461CDCDA7E00E83F52 /* Color.swift in Sources */,
 				11D69B6F1CD8E9CD00849B24 /* Keys.swift in Sources */,
 				1129699E1CD100B7004C1835 /* MapView.swift in Sources */,
@@ -636,7 +648,6 @@
 		};
 		1129698F1CD10004004C1835 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8F4375FB8F94F5F5D4BBBD2 /* Pods-RunEUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RunEUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -648,7 +659,6 @@
 		};
 		112969901CD10004004C1835 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF83BAE2B1777B01B80ABCC1 /* Pods-RunEUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RunEUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

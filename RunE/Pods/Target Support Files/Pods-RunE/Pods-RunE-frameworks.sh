@@ -84,12 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-RunE/Firebase.framework"
   install_framework "Pods-RunE/RxCocoa.framework"
   install_framework "Pods-RunE/RxSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-RunE/Firebase.framework"
   install_framework "Pods-RunE/RxCocoa.framework"
   install_framework "Pods-RunE/RxSwift.framework"
 fi

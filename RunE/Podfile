@@ -4,7 +4,9 @@
 use_frameworks!
 
 target 'RunE' do
-    pod 'Firebase', '>= 2.5.1'
+    pod 'Firebase'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
     pod 'RxSwift',    '~> 2.0'
     pod 'RxCocoa',    '~> 2.0'
 end

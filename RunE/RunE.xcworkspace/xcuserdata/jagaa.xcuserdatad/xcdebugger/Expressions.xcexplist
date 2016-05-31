@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "LocationService.allLocationToAnyObject() -&gt; AnyObject:LocationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.allLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "LocationDataSet.getAllData() -&gt; [DataSet]:MapView.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,7 +19,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapView.showCurrentLocation() -&gt; ():MapView.swift">
+         contextName = "LocationService.saveData((ret : Bool) -&gt; ()) -&gt; ():LocationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.duration.value">
+            </PersistentString>
+            <PersistentString
+               value = "self.totalDistance.value">
+            </PersistentString>
+            <PersistentString
+               value = "self.totalCalories.value">
+            </PersistentString>
+            <PersistentString
+               value = "duration">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapView.saveData((ret : Bool) -&gt; ()) -&gt; ():MapView.swift">
          <PersistentStrings>
             <PersistentString
                value = "allDataLocation">
@@ -38,7 +63,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapView.saveData((ret : Bool) -&gt; ()) -&gt; ():MapView.swift">
+         contextName = "MapView.showCurrentLocation() -&gt; ():MapView.swift">
          <PersistentStrings>
             <PersistentString
                value = "allDataLocation">

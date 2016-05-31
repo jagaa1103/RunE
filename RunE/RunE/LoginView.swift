@@ -16,14 +16,11 @@ class LoginView: UIViewController{
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-    }
     
     @IBAction func loginButtonClicked(sender: AnyObject) {
-        LoginService.sharedInstance.loginByFacebook(){
-            (ret: String) in
-            if ret == "loggedIn" {
+        FirebaseService.sharedInstance.loginByFacebook(self){
+            (ret: Bool) in
+            if ret == true {
                 self.closeView()
             }else{
                 print("you cannot logged in")

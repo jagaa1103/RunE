@@ -8,47 +8,99 @@
 
 import Foundation
 import Firebase
-import CoreLocation
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class FirebaseService: NSObject{
     static let sharedInstance = FirebaseService()
-    var rootRef:Firebase?
+    var rootRef = FIRDatabase.database().reference()
+    var auth = FIRAuth.auth()
+    
     var firebaseKey: String = ""
     override init() {
         super.init()
-        // Create a reference to a Firebase location
-        self.firebaseKey = Keys.sharedInstance.getFirebaseKey()
-        startService()
     }
-    func startService(){
-        self.rootRef = Firebase(url:"\(self.firebaseKey)")
-        self.rootRef!.observeEventType(.Value, withBlock: { snapshot in
-            let connected = snapshot.value as? Bool
-            if connected != nil && connected! {
-                print("Connected")
-            } else {
-                print("Not connected")
-            }
+    
+    func saveLocationData(running_info: AnyObject, completion:(ret:Bool)->Void){
+        let locationRef = self.rootRef.child("location_data").child(String(self.auth!.currentUser!.uid)).child(getCurrentTime())
+        locationRef.setValue(running_info, withCompletionBlock: {
+            (err: NSError?, ref: FIRDatabaseReference) in
+                if (err != nil){
+                    print("Data could not be saved.")
+                    completion(ret:false)
+                }else{
+                    print("Data saved successfully!")
+                    completion(ret:true)
+                }
         })
     }
     
-    func getFirebaseRef()->Firebase{
-        return self.rootRef!
+    func checkAuth(completion:(ret:Bool)->Void){
+        if let currentUser = self.auth!.currentUser {
+            print("user is logged in")
+            print(currentUser)
+            completion(ret:true)
+        }else{
+            print("user is not logged in")
+            completion(ret:false)
+        }
     }
     
-    func saveLocationData(uid: String, running_info: AnyObject, completion:(ret:Bool)->Void){
-        let locationRef = Firebase(url: "\(self.firebaseKey)/location_data")
-        
-        locationRef.childByAppendingPath(uid).childByAppendingPath(getCurrentTime()).setValue(running_info, withCompletionBlock: {
-            (error:NSError?, ref:Firebase!) in
-            if (error != nil) {
-                print("Data could not be saved.")
-                completion(ret:false)
+    func loginByFacebook(view: UIViewController, completion:(ret:Bool)->Void){
+        let facebookLogin = FBSDKLoginManager()
+        facebookLogin.logInWithReadPermissions(["email", "public_profile"], fromViewController: view, handler: {
+            (result, error) -> Void in
+            if error != nil {
+                completion(ret: false)
+                print("Facebook login failed. Error \(error)")
+            } else if result.isCancelled {
+                print("Facebook login was cancelled.")
+                completion(ret: false)
             } else {
-                print("Data saved successfully!")
-                completion(ret:true)
+                let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                self.firebaselogin(credential){
+                    (ret: Bool) in
+                    if(ret == true){
+                        completion(ret: true)
+                    }else{
+                        completion(ret: false)
+                    }
+                }
             }
+
         })
+    }
+    
+    func firebaselogin(credential: FIRAuthCredential, completion:(ret: Bool)->Void){
+        if let user = self.auth!.currentUser {
+            user.linkWithCredential(credential) { (user, error) in
+                if (error != nil){
+                    print("cannot login credential")
+                    completion(ret: false)
+                }else{
+                    print("login credential")
+                    completion(ret: true)
+                }
+            }
+        } else {
+            self.auth!.signInWithCredential(credential) { (user, error) in
+                if (error != nil){
+                    print("cannot login credential")
+                    completion(ret: false)
+                }else{
+                    print("login credential")
+                    completion(ret: true)
+                }
+            }
+        }
+    }
+    
+    func logout(){
+        do {
+            try self.auth!.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     func getCurrentTime()->String{

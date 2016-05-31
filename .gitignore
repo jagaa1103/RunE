@@ -67,3 +67,5 @@ fastlane/test_output
 
 Keys.plist
 Info.plist
+GoogleService-Info.plist
+

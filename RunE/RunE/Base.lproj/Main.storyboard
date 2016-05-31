@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="147.73333333333332" y="186.02000000000001"/>
         </scene>
-        <!--Main View-->
+        <!--Menu View-->
         <scene sceneID="OPt-1P-bMc">
             <objects>
-                <viewController storyboardIdentifier="MainView" id="B5c-vJ-UBV" customClass="MainView" customModule="RunE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuView" id="B5c-vJ-UBV" customClass="MenuView" customModule="RunE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="odS-kZ-wMU"/>
                         <viewControllerLayoutGuide type="bottom" id="HeF-7c-ant"/>
@@ -37,7 +37,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MainViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ain-YT-G3a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MenuViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ain-YT-G3a">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujc-Dj-5o7">
@@ -99,50 +99,31 @@
             <point key="canvasLocation" x="537" y="186"/>
         </scene>
         <!--Login View-->
-        <scene sceneID="dSH-NK-x5I">
+        <scene sceneID="dcC-Vb-qp9">
             <objects>
-                <viewController storyboardIdentifier="LoginView" id="jYF-lB-2bC" customClass="LoginView" customModule="RunE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="hhX-3F-tqb" customClass="LoginView" customModule="RunE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dm5-qP-2SP"/>
-                        <viewControllerLayoutGuide type="bottom" id="fjw-K4-t3B"/>
+                        <viewControllerLayoutGuide type="top" id="2QI-v8-dCl"/>
+                        <viewControllerLayoutGuide type="bottom" id="5oJ-nk-Lxj"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Uxm-x3-hph">
+                    <view key="view" contentMode="scaleToFill" id="p5W-kZ-2dt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MainViewBackground" translatesAutoresizingMaskIntoConstraints="NO" id="z85-sV-JDs">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="3K5-t8-Vel"/>
-                                    <constraint firstAttribute="height" constant="568" id="fmY-BG-0dm"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ce-Aq-11g">
-                                <rect key="frame" x="66" y="475" width="187" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="187" id="3oz-Ls-jaj"/>
-                                    <constraint firstAttribute="height" constant="48" id="ekD-t8-dDI"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="facebook_login.png"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQf-uk-pY0">
+                                <rect key="frame" x="141" y="277" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="loginButtonClicked:" destination="jYF-lB-2bC" eventType="touchUpInside" id="Mtc-9j-6LS"/>
+                                    <action selector="loginButtonClicked:" destination="hhX-3F-tqb" eventType="touchUpInside" id="Vfw-Oa-O0b"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="z85-sV-JDs" firstAttribute="top" secondItem="Uxm-x3-hph" secondAttribute="topMargin" id="8JG-3W-T1N"/>
-                            <constraint firstItem="fjw-K4-t3B" firstAttribute="top" secondItem="0ce-Aq-11g" secondAttribute="bottom" constant="45" id="K03-fc-rKW"/>
-                            <constraint firstItem="0ce-Aq-11g" firstAttribute="centerX" secondItem="Uxm-x3-hph" secondAttribute="centerX" constant="1" id="VeJ-MO-DQU"/>
-                            <constraint firstItem="z85-sV-JDs" firstAttribute="leading" secondItem="Uxm-x3-hph" secondAttribute="leadingMargin" constant="-20" id="kro-bN-bqj"/>
-                            <constraint firstItem="fjw-K4-t3B" firstAttribute="top" secondItem="z85-sV-JDs" secondAttribute="bottom" id="zZV-zn-iYG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="z85-sV-JDs" secondAttribute="trailing" constant="-20" id="zq0-0K-ruK"/>
-                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VW4-DA-oPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2r8-kP-lN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="841"/>
+            <point key="canvasLocation" x="537" y="826"/>
         </scene>
         <!--Map View-->
         <scene sceneID="fF6-lS-xxX">
@@ -157,13 +138,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SB9-Wu-WEe">
-                                <rect key="frame" x="0.0" y="125" width="320" height="443"/>
+                                <rect key="frame" x="0.0" y="273" width="320" height="295"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SB9-Wu-WEe" secondAttribute="height" multiplier="320:443" id="6in-0s-2rq"/>
                                 </constraints>
                             </mapView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfV-xR-Pf4" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="-2" width="320" height="128"/>
+                                <rect key="frame" x="0.0" y="-2" width="320" height="277"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO9-TE-ale">
                                         <rect key="frame" x="163" y="34" width="149" height="42.5"/>
@@ -211,18 +192,28 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stationary.png" translatesAutoresizingMaskIntoConstraints="NO" id="mSj-Tw-txI">
+                                        <rect key="frame" x="128" y="21" width="65" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="74" id="69Y-lX-JRq"/>
+                                            <constraint firstAttribute="width" constant="65" id="vHF-wz-PBQ"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="e6i-Cg-Ymj" firstAttribute="top" secondItem="QEk-eS-ead" secondAttribute="bottom" constant="1" id="3x7-1V-EHn"/>
+                                    <constraint firstItem="mSj-Tw-txI" firstAttribute="leading" secondItem="lfV-xR-Pf4" secondAttribute="leading" constant="128" id="5nb-Li-xoW"/>
                                     <constraint firstAttribute="trailing" secondItem="mVq-Yi-gME" secondAttribute="trailing" constant="8" id="9p4-KJ-mn7"/>
                                     <constraint firstItem="Qie-q6-adR" firstAttribute="leading" secondItem="lfV-xR-Pf4" secondAttribute="leading" id="EHM-Xe-rc5"/>
                                     <constraint firstAttribute="width" secondItem="lfV-xR-Pf4" secondAttribute="height" multiplier="5:2" id="IBI-Ge-y7N"/>
                                     <constraint firstAttribute="trailing" secondItem="Qie-q6-adR" secondAttribute="trailing" id="MpC-0m-UyN"/>
                                     <constraint firstAttribute="bottom" secondItem="Qie-q6-adR" secondAttribute="bottom" id="SNf-9T-0ha"/>
+                                    <constraint firstAttribute="trailing" secondItem="mSj-Tw-txI" secondAttribute="trailing" constant="127" id="Wsp-Jc-BC4"/>
                                     <constraint firstItem="e6i-Cg-Ymj" firstAttribute="leading" secondItem="lfV-xR-Pf4" secondAttribute="leading" constant="8" id="fMA-2w-WeD"/>
                                     <constraint firstItem="mVq-Yi-gME" firstAttribute="top" secondItem="qO9-TE-ale" secondAttribute="bottom" constant="1.5" id="i30-2G-naR"/>
                                     <constraint firstItem="QEk-eS-ead" firstAttribute="leading" secondItem="lfV-xR-Pf4" secondAttribute="leading" constant="8" id="nTH-VB-wyH"/>
+                                    <constraint firstItem="mSj-Tw-txI" firstAttribute="top" secondItem="lfV-xR-Pf4" secondAttribute="top" constant="21" id="ndO-Ba-O7Q"/>
                                     <constraint firstItem="QEk-eS-ead" firstAttribute="top" secondItem="lfV-xR-Pf4" secondAttribute="top" constant="34" id="qng-zE-Gyz"/>
                                     <constraint firstItem="qO9-TE-ale" firstAttribute="top" secondItem="lfV-xR-Pf4" secondAttribute="top" constant="34" id="vkY-7W-PNa"/>
                                     <constraint firstAttribute="trailing" secondItem="qO9-TE-ale" secondAttribute="trailing" constant="8" id="wyC-tJ-kAO"/>
@@ -263,6 +254,7 @@
                         <outlet property="distanceLabel" destination="QEk-eS-ead" id="KAu-JQ-dqs"/>
                         <outlet property="durationLabel" destination="Qie-q6-adR" id="tYL-J5-1TW"/>
                         <outlet property="mapView" destination="SB9-Wu-WEe" id="P42-OM-TqA"/>
+                        <outlet property="motion_status_image" destination="mSj-Tw-txI" id="gyc-hr-MGs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84W-fT-WR7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,8 +263,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MainViewBackground" width="375" height="667"/>
-        <image name="facebook_login.png" width="591" height="145"/>
+        <image name="MenuViewBackground" width="375" height="667"/>
+        <image name="stationary.png" width="400" height="500"/>
         <image name="stop.png" width="173" height="173"/>
     </resources>
 </document>
